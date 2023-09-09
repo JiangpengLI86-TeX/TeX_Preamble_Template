@@ -1,0 +1,113 @@
+
+% Encoding Settings
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+
+
+% Font Settings
+\usepackage{times}
+
+
+
+% Paragraph Settings
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{parskip}
+
+
+
+% Reference Settings
+\usepackage[
+    backend=biber,
+    style=ieee,
+]{biblatex}
+\addbibresource{References.bib}
+
+
+
+% Figure Settings
+\usepackage{graphicx} % Required for inserting images
+\renewcommand{\figurename}{\textbf{Fig.}}
+
+\usepackage{float}
+
+
+
+% Array Settings
+\usepackage{array}
+\newcolumntype{R}{>{$}r<{$}} % math-mode version of "r" column type
+\newcolumntype{C}{>{$}c<{$}} % math-mode version of "c" column type
+\newcolumntype{L}{>{$}l<{$}} % math-mode version of "l" column type
+
+\usepackage{cellspace}
+
+
+
+% Hyper-reference Settings
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=cyan,
+    citecolor=cyan,
+    urlcolor=cyan,
+}
+% \usepackage[all]{hypcap} 
+% \makeatletter
+% \AtBeginDocument{\def\@citecolor{cyan}}  % Define citing 
+% \AtBeginDocument{\def\@urlcolor{cyan}}
+% \AtBeginDocument{\def\@linkcolor{cyan}}
+% \makeatother
+
+
+
+% Mathematical Settings 
+\usepackage{mathtools}
+\usepackage{amssymb,mathrsfs}  % Typical maths resource packages
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{nccmath}  % To narrow parskip between two equations. \useshortskip
+
+% Create a checkbox sign
+\newcommand{\checkbox}[1]{%
+  \ifnum#1=1
+    \makebox[0pt][l]{\raisebox{0.15ex}{\hspace{0.1em}$\checkmark$}}%
+  \fi
+  $\square$%
+}
+
+
+
+% Equation Settings
+% \counterwithout{equation}{chapter}
+
+
+
+% Algorithm Settings
+\usepackage{algorithmic}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+
+
+% Line Number Settings
+\usepackage{lineno}
+% \linenumbers  % Uncomment this line to turn on the line number settings
+
+
+
+% Code Settings
+% \usepackage{courier}
+
+
+
+% Subfile Settings
+% \usepackage{subfiles}
+% \providecommand{\topdir}{.}
+% \addglobalbib{\topdir/References.bib}
+
+
+
+% Attach File Settings
+\usepackage{attachfile}
+% \attachfile[icon=Paperclip]{Test.pdf}
