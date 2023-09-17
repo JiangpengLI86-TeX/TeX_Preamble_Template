@@ -5,6 +5,21 @@
 
 
 
+% Page Format Settings
+% Enable multicolumn format in the page
+\usepackage{multicol}
+\usepackage{color}  % For color used column separator
+\setlength{\columnsep}{0.2cm}  % Set Column separation
+\setlength{\columnseprule}{1pt}
+\def\columnseprulecolor{\color{blue}}  % Add a vertical line between two columns.
+
+% Command template:
+% \begin{multicols}{4}  % Four column format
+
+% \end{multicols}
+
+
+
 % Font Settings
 \usepackage{times}
 
@@ -29,6 +44,7 @@
 \onehalfspacing
 \usepackage{parskip}
 \setlength{\parindent}{0in}
+
 
 
 % Reference Settings
@@ -103,9 +119,9 @@
     citecolor=cyan,
     urlcolor=cyan,
 }
-% \usepackage[all]{hypcap} 
+% \usepackage[all]{hypcap}
 % \makeatletter
-% \AtBeginDocument{\def\@citecolor{cyan}}  % Define citing 
+% \AtBeginDocument{\def\@citecolor{cyan}}  % Define citing
 % \AtBeginDocument{\def\@urlcolor{cyan}}
 % \AtBeginDocument{\def\@linkcolor{cyan}}
 % \makeatother
@@ -115,7 +131,7 @@
 
 
 
-% Mathematical Settings 
+% Mathematical Settings
 \usepackage{mathtools}
 \usepackage{amssymb,mathrsfs}  % Typical maths resource packages
 \usepackage{amsthm}
@@ -127,15 +143,25 @@
 % Equation Settings
 % \counterwithout{equation}{chapter}
 
-% To use the large bracket on one side of equation:
+% To use the large bracket on one side of equations:
 % \begin{equation}
 %     \label{eq:sum}
-%     Sum = 
+%     Sum =
 %     \begin{cases}
 %        Y_1 + Y_2 + Y_3, & \theta = 3 \\
 %        Y_1 + Y_2 + \cdots + Y_8, & \theta = 8
 %     \end{cases}
 % \end{equation}
+
+% Enable cancel symbol in equations
+% \usepackage{cancel}
+% Command template:
+% \cancel{XXX}
+
+% Enable probability P symbol in equations
+% \usepackage{dsfont}
+% Command template:
+% \mathds{P}
 
 
 
