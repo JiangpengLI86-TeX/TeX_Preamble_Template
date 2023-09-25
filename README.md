@@ -37,7 +37,7 @@
   - Define a type of column using small font, align to right and adjust space automatically
   - Modify the space on the bottom and top of each cell
   - Some package required by www.tablesgenerator.com
-  - Rename the Table name in supplymentary file from "Table X" to "Table SX"
+  - Rename the Table name in supplementary file from "Table X" to "Table SX"
   - Equally spread columns to fulfill the whole page
   - Define a horizontal line that only appears in specific columns:
 - [Hyper-reference Settings](#-hyper-reference-settings)
@@ -47,17 +47,22 @@
 - [Mathematical Settings](#-mathematical-settings)
   - Some basic mathmatical packages
   - Narrow paragraph skip between two equations
+  - Enable the usage of probability P and E
 - [Equation Settings](#-equation-settings)
   - Set equation countings irrelevant to paragraph countings
+  - Enable cancel symbol in equations
 - [Algorithm Settings](#-algorithm-settings)
   - Some basic sudo-algorithm packages
-  - Reset the algorithm "Acquire" and "Ensure" to "Input" and "Output"
+  - Reset the algorithm "Acquire" and "Ensure" to "Input" a nd "Output"
 - [Enumerate Settings](#-enumerate-settings)
   - Set the enumerate item to use arabic tag
 - [Line Number Settings](#-line-number-settings)
   - Enable line number of the document
 - [Code Settings](#-code-settings)
   - Enable code display by importing code from a file
+  - Some Basic packages for inline and code block printings
+  - Define an inline code display using gray background and ttfamily fonts
+  - Define a text field that can store the code without line-breaking
 - [Subfile Settings](#-subfile-settings)
   - Enable each subfile to be compile independently but sharing the preamble of the main file
 - [Attach File Settings](#-attach-file-settings)
@@ -258,11 +263,17 @@
 ```
 
 ```latex
-% Narrow paragraph skip between two equations
+% Narrow paragraph skip between equation and its previous paragraph
 \usepackage{nccmath}
 
 % Command template:
 \useshortskip
+```
+
+```latex
+% Enable the usage of probability P and E
+\mathds{P}
+\mathbb{E}
 ```
 
 #### \>>> Equation Settings
@@ -270,6 +281,13 @@
 ```latex
 % Set equation countings irrelevant to paragraph countings
 \counterwithout{equation}{chapter}
+```
+
+```latex
+% Enable cancel symbol in equations
+\usepackage{cancel}
+% Command template:
+\cancel{XXX}
 ```
 
 #### \>>> Algorithm Settings
@@ -310,6 +328,41 @@
 % Enable code display by importing code from a file
 \usepackage{courier}
 \usepackage{minted}
+```
+
+```latex
+% Basic packages for inline and code block printings
+\usepackage{color,soul}
+\definecolor{codegray}{gray}{0.9}  % Define a new color for code block background.
+\usepackage{upquote}  % Ensure the ' mark is displayed correctly.
+\usepackage{listings}  % Used for code printing.
+```
+
+```latex
+% Define an inline code display using gray background and ttfamily fonts
+\newcommand{\codeinline}[1]{\colorbox{codegray}{\lstinline[basicstyle=\ttfamily,breaklines=true]|#1|}}
+```
+
+```latex
+% Define a text field that can store the code without line-breaking. 
+
+% Note: hyperref package is required.
+
+% Set up a counter for auto-labelling
+\newcounter{codeCounter}
+% Setup the text field command. Check the hyperref package documentation for more set up options
+\newcommand{\codeblock}[1]
+{   
+   \stepcounter{codeCounter}
+   \TextField[default=\detokenize{#1}, width=0.9\columnwidth, height=15pt, charsize=12pt,
+   ]{\thecodeCounter}
+}
+% suppress the label behind the text field:
+\def\LayoutTextField#1#2{% label, field
+ #2%
+}
+% Command template:
+\codeblock{Your codes here}
 ```
 
 #### \>>> Subfile Settings
