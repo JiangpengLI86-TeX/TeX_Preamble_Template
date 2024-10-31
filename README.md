@@ -2,97 +2,82 @@
 
 :exclamation: NOTE: Some of the package are comment out, check the TEX file for real inclusion.
 
-## 1. Table of Contents
-- [Base Preamble](#2-base-preamble)
-- [Assignment Preamble](#3-preamble-for-assignments)
+- [Latex Preamble File Repository](#latex-preamble-file-repository)
+  - [Usage](#usage)
+  - [Detail Description of Settings](#detail-description-of-settings)
+    - [Encoding Settings](#encoding-settings)
+    - [Multi Columns Settings](#multi-columns-settings)
+    - [Font Settings](#font-settings)
+    - [Paragraph Settings](#paragraph-settings)
+    - [Reference Settings](#reference-settings)
+    - [Figure Settings](#figure-settings)
+    - [Table Settings](#table-settings)
+    - [Hyper-reference Settings](#hyper-reference-settings)
+    - [Mathematical Settings](#mathematical-settings)
+    - [Algorithm Settings](#algorithm-settings)
+    - [Enumerate Settings](#enumerate-settings)
+    - [Line Number Settings](#line-number-settings)
+    - [Code Settings](#code-settings)
+    - [Subfile Settings](#subfile-settings)
+    - [Attach File Settings](#attach-file-settings)
+    - [New Symbol Settings](#new-symbol-settings)
+    - [Information Block Settings](#information-block-settings)
 
+## Usage
 
-## 2. Base Preamble
-### - File
-- preamble.tex
-
-### - Usage
-> \input{preamble.tex}
-
-### - Table of Settings
-- [Encoding Settings](#-encoding-settings)
-  - Set latex encoding mode.
-- [Font Settings](#-font-settings)
-  - Specify font to Times New Roman.
-  - Define a font that will not be elongated in extremely small font size.
-- [Paragraph Settings](#-paragraph-settings)
-  - Set space between paragraphs
-  - Set indent of paragraphs
-- [Reference Settings](#-reference-settings)
-  - Set biblatex format and set reference source file
-  - Wrap long doi strings in reference
-- [Figure Settings](#-figure-settings)
-  - Basic figure package
-  - Rename figure name from "Figure." to "Fig."
-  - Enable figure floating
-  - Enable two figures in one line
-- [Array Settings](#-array-settings)
-  - Basic Array pakcage
-  - Define three column types with automatic math mode
-  - Define a type of column using small font, align to right and adjust space automatically
-  - Modify the space on the bottom and top of each cell
-  - Some package required by www.tablesgenerator.com
-  - Rename the Table name in supplementary file from "Table X" to "Table SX"
-  - Equally spread columns to fulfill the whole page
-  - Define a horizontal line that only appears in specific columns:
-- [Hyper-reference Settings](#-hyper-reference-settings)
-  - Hyperref package setting, including link, cite and url color
-  - Some redundent link color settings
-  - Make the brackets of equation citation blue
-- [Mathematical Settings](#-mathematical-settings)
-  - Some basic mathmatical packages
-  - Narrow paragraph skip between two equations
-  - Enable the usage of probability P and E
-- [Equation Settings](#-equation-settings)
-  - Set equation countings irrelevant to paragraph countings
-  - Enable cancel symbol in equations
-- [Algorithm Settings](#-algorithm-settings)
-  - Some basic sudo-algorithm packages
-  - Reset the algorithm "Acquire" and "Ensure" to "Input" a nd "Output"
-- [Enumerate Settings](#-enumerate-settings)
-  - Set the enumerate item to use arabic tag
-- [Line Number Settings](#-line-number-settings)
-  - Enable line number of the document
-- [Code Settings](#-code-settings)
-  - Enable code display by importing code from a file
-  - Some Basic packages for inline and code block printings
-  - Define an inline code display using gray background and ttfamily fonts
-  - Define a text field that can store the code without line-breaking
-- [Subfile Settings](#-subfile-settings)
-  - Enable each subfile to be compile independently but sharing the preamble of the main file
-- [Attach File Settings](#-attach-file-settings)
-  - Enable a PDF file to be attached to another PDF file
-- [Additional Settings](#-additional-settings)
-  - Define a new symbol: "Checkbox"
-
-### - Detail Description of Settings:
-#### \>>> Encoding Settings
+Put following code in the main file:
 
 ```latex
-% This two lines of code is used to set the encoding setting of latex files.
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
+\input{preamble.tex}
 ```
 
-#### \>>> Font Settings
+## Detail Description of Settings
+
+### Encoding Settings
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set the encoding setting of latex files.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[T1]{fontenc}  % This is especially useful for European languages that use accented characters.
+\usepackage[utf8]{inputenc}  % Use UTF-8 encoding
+```
+
+### Multi Columns Settings
+
+```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Enable multicolumn format in the page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{multicol}
+\usepackage{color}  % For color used column separator
+\setlength{\columnsep}{0.2cm}  % Set Column separation
+\setlength{\columnseprule}{1pt}
+\def\columnseprulecolor{\color{blue}}  % Add a vertical line between two columns.
+
+% Command template:
+\begin{multicols}{4}  % Four column format
+
+\end{multicols}
+```
+
+### Font Settings
+
+```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Specify Times New Roman as the font used in the file.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{times}
 ```
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Define a font type, called Tinyb, that will not be elongated in extremely small font size. 
-\Tinyb  % Use just like \tiny or \normalsize
-\usepackage{lmodern}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Tinyb  % Define a new font type, Tinyb.
+\usepackage{lmodern}  % Provide better scalability and font shapes for different sizes and weights.
 \rmfamily
-\DeclareFontShape{T1}{lmr}{bx}{sc}{<-> cmr10}{}  % USE BOLD SCSHAPE NOT OTHERWISE DEFINED
-%%% MATH FONT FIX
+\DeclareFontShape{T1}{lmr}{bx}{sc}{<-> cmr10}{}
 \DeclareFontFamily{OML}{zlmm}{}
 \DeclareFontShape{OML}{zlmm}{m}{it}{<-> lmmi10}{}
 \DeclareFontShape{OML}{zlmm}{b}{it}{<->ssub * zlmm/m/it}{}
@@ -103,57 +88,77 @@
 \newenvironment{tinyb}{\bgroup\tiny\bfseries\scshape\mathversion{Tinyb}}{\egroup}
 ```
 
-#### \>>> Paragraph Settings
+### Paragraph Settings
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Set space between paragraphs
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{setspace}
 \onehalfspacing
 ```
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Set indent of paragraphs
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{parskip}
 \setlength{\parindent}{0in}
 ```
 
-#### \>>> Reference Settings
+### Reference Settings
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Set biblatex format and reference source file.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[
-    backend=biber,
+    backend=biber,  % It supports UTF-8 encoding and offers better handling of modern bibliography features, such as sorting and field mapping.
     style=ieee,
+    maxbibnames=3,  % Maximum number of authors to be displayed in the bibliography
+    citestyle=numeric-comp,  % Put multiple citations in one bracket
+    hyperref=true,  % Enable hyperlinks in the bibliography
+    backref=true,  % Enable back references in the bibliography
 ]{biblatex}
-\addbibresource{References.bib}
+\addbibresource{references.bib}
 ```
 
 ```latex
-% Wrap long doi strings in reference
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Elegantly break long doi field
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setcounter{biburllcpenalty}{100}
 \setcounter{biburlucpenalty}{100}
 \setcounter{biburlnumpenalty}{100}
 ```
 
-#### \>>> Figure Settings
+### Figure Settings
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Basic figure package
-\usepackage{graphicx} % Required for inserting images
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}  % Required for inserting images
 ```
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Rename figure name from "Figure." to "Fig."
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\figurename}{\textbf{Fig.}}
 ```
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Enable figure floating
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{float}
 ```
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Enable two figures in one line
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{subfig}
 
 % Command template:
@@ -168,22 +173,28 @@
 \end{figure}
 ```
 
-#### \>>> Array Settings
+### Table Settings
 
 ```latex
-% Basic Array pakcage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Basic Array package
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{array}
 ```
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Define three column types with automatic math mode
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcolumntype{R}{>{$}r<{$}} % math-mode version of "r" column type
 \newcolumntype{C}{>{$}c<{$}} % math-mode version of "c" column type
 \newcolumntype{L}{>{$}l<{$}} % math-mode version of "l" column type
 ```
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Define a type of column using small font, align to right and adjust space automatically
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Defines a new type of column called Y based on a X column (this column type 
 % is defined by the tabularx package and it is basically a p{ <width>} column,
 % where <width> is calculated by the package) but typesets the content using 
@@ -192,14 +203,18 @@
 ```
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Modify the space on the bottom and top of each cell
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{cellspace}
 \addtolength{\cellspacetoplimit}{5pt}
 \addtolength{\cellspacebottomlimit}{5pt}
 ```
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Some package required by www.tablesgenerator.com
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{multirow}
 \usepackage{tabularx,booktabs}
 \usepackage{longtable}
@@ -207,27 +222,36 @@
 ```
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Rename the Table name in supplymentary file from "Table X" to "Table SX"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\thetable}{S\arabic{table}}
 ```
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Equally spread columns to fulfill the whole page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{longtable}[c]{@{\extracolsep{\fill}}Lllllllll}
+\end{longtable}
 ```
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Define a horizontal line that only appears in specific columns:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{hhline}
 
 % Command templage:
 \hhline{~----~~}  % Use as \hline, but the column with ~ will not have a horizontal line.
 ```
 
-#### \>>> Hyper-reference Settings
+### Hyper-reference Settings
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Hyperref package setting, including link, cite and url color
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
@@ -235,27 +259,38 @@
     citecolor=cyan,
     urlcolor=cyan,
 }
-```
-
-```latex
-% Some redundent link color settings
-\usepackage[all]{hypcap} 
-\makeatletter
-\AtBeginDocument{\def\@citecolor{cyan}}  % Define citing 
+\makeatletter  % Allow manipulation of internal LaTeX macros.
+\AtBeginDocument{\def\@citecolor{cyan}}  % Redefines the internal LaTeX color used for citation links. Executed at the beginning of the document.
 \AtBeginDocument{\def\@urlcolor{cyan}}
 \AtBeginDocument{\def\@linkcolor{cyan}}
 \makeatother
 ```
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Make the brackets of equation citation blue
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Command template:
 \hyperref[eq:clpso_velocity]{(\ref*{eq:clpso_velocity})}
 ```
 
-#### \>>> Mathematical Settings
+```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some redundant link color settings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The hypcap package is used to fix a common issue with hyperlinks in documents that contain figures and tables. By default, when clicking on a hyperlink to a figure or table, the link takes you to the beginning of the caption instead of the figure or table itself.
+% The all option tells hypcap to apply this fix to all types of floats
+\usepackage[all]{hypcap}
+```
+
+### Mathematical Settings
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Some basic mathmatical packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{mathtools}
 \usepackage{amssymb,mathrsfs}  % Typical maths resource packages
 \usepackage{amsthm}
@@ -263,7 +298,9 @@
 ```
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Narrow paragraph skip between equation and its previous paragraph
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{nccmath}
 
 % Command template:
@@ -271,67 +308,79 @@
 ```
 
 ```latex
-% Enable the usage of probability P and E
-\mathds{P}
-\mathbb{E}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Enable the usage of some symbols in the math mode
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mathds{P}  % Symbol for probability
+\mathbb{E}  % Symbol for expectation
+
+\usepackage{cancel}  % Enable cancel symbol in equations. Template: \cancel{XXX}
 ```
 
-#### \>>> Equation Settings
-
 ```latex
-% Set equation countings irrelevant to paragraph countings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set equation counting irrelevant to paragraph counting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \counterwithout{equation}{chapter}
 ```
 
-```latex
-% Enable cancel symbol in equations
-\usepackage{cancel}
-% Command template:
-\cancel{XXX}
-```
-
-#### \>>> Algorithm Settings
+### Algorithm Settings
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Some basic sudo-algorithm packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{algorithmic}
 \usepackage{algpseudocodex}
 ```
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Reset the algorithm "Acquire" and "Ensure" to "Input" and "Output"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
 ```
 
-#### \>>> Enumerate Settings
+### Enumerate Settings
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Set the enumerate item to use arabic tag
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{enumitem}
+
+% Command template:
 \begin{enumerate}[label={(\arabic*).}]
     \item XXX
     \item XXX
 \end{enumerate}
 ```
 
-#### \>>> Line Number Settings
+### Line Number Settings
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Enable line number of the document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{lineno}
 \linenumbers  % Uncomment this line to turn on the line number settings
 ```
-#### \>>> Code Settings
+
+### Code Settings
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Enable code display by importing code from a file
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{courier}
 \usepackage{minted}
 ```
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Basic packages for inline and code block printings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{color,soul}
 \definecolor{codegray}{gray}{0.9}  % Define a new color for code block background.
 \usepackage{upquote}  % Ensure the ' mark is displayed correctly.
@@ -339,17 +388,28 @@
 ```
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Define an inline code display using gray background and ttfamily fonts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\codeinline}[1]{\colorbox{codegray}{\lstinline[basicstyle=\ttfamily,breaklines=true]|#1|}}
+
+% Command template:
+\codeinline{Your codes here}
 ```
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Define a text field that can store the code without line-breaking. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Command template:
+\codeblock{Your codes here}
 
 % Note: hyperref package is required.
 
 % Set up a counter for auto-labelling
 \newcounter{codeCounter}
+
 % Setup the text field command. Check the hyperref package documentation for more set up options
 \newcommand{\codeblock}[1]
 {   
@@ -361,34 +421,37 @@
 \def\LayoutTextField#1#2{% label, field
  #2%
 }
-% Command template:
-\codeblock{Your codes here}
 ```
 
-#### \>>> Subfile Settings
+### Subfile Settings
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Enable each subfile to be compile independently but sharing the preamble of the main file
-\usepackage{subfiles}
-\providecommand{\topdir}{.}
-\addglobalbib{\topdir/References.bib}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{subfiles}  % Manage large LaTeX projects by splitting them into multiple smaller files.
+\providecommand{\topdir}{.}  % Create a consistent reference point for all files
+\addglobalbib{\topdir/references.bib}
 ```
 
-#### \>>> Attach File Settings
+### Attach File Settings
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Enable a PDF file to be attached to another PDF file
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{attachfile}
 
 % Command template:
 \attachfile[icon=Paperclip]{Test.pdf}
 ```
- 
 
-#### \>>> Additional Settings
+### New Symbol Settings
 
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Define a new symbol: "Checkbox"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\checkbox}[1]{%
   \ifnum#1=1
     \makebox[0pt][l]{\raisebox{0.15ex}{\hspace{0.1em}$\checkmark$}}%
@@ -397,22 +460,13 @@
 }
 ```
 
-## 3. Preamble for Assignments
-### - File
-- assignment_preamble.tex
+### Information Block Settings
 
-### - Usage
-> \input{assignment_preamble.tex}
-
-Note: Do not `\input{preamble.tex}` again, since it is already input in the assignment_preamble.tex.
-
-### - Table of Settings
-- [Information Block Settings](#-information-block-settings) 
-
-### - Detail Description of Settings:
-#### \>>> Information Block Settings
 ```latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Print a information block
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % #1: Course Code, #2: Course Name, #3 Assignment Index, #4 Date
 \newcommand{\assignment}[4]{
   \noindent
