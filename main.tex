@@ -1,7 +1,15 @@
 \documentclass[12pt]{article}
 \usepackage[a4paper,top=3cm,bottom=3cm,left=3cm,right=3cm,marginparwidth=1.75cm,headheight=22pt]{geometry}
 
-\input{preamble.tex}
+% Include the main preamble
+\input{src/preambles/main_preamble.tex}
+
+% Process the desired preamble options
+\mypreamble{%
+  core,
+}
+
+\usepackage{lipsum}
 
 \title{Preamble Template}
 \author{Jiangpeng LI}
@@ -11,6 +19,14 @@
 
 \maketitle
 
-This project is used to store all kind of preamble files that could be used in the future projects.
+\section{Introduction}
+
+\lipsum[2] \cite{sutton2018reinforcement}
+
+\lipsum
+
+\newpage
+
+\printbibliography
 
 \end{document}

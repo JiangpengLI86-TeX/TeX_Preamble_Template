@@ -1,0 +1,35 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Specify Times New Roman as the font used in the file.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\IncludeFontCore}{
+  \usepackage{times}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Specify Times New Roman as the font used in the file.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPreambleFontCore
+
+\IncludeFontCore
+
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Define a font type, called Tinyb, that will not be elongated in extremely small font size.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPreambleFontTinyb
+
+\IncludeFontCore
+\usepackage{lmodern}  % Provide better scalability and font shapes for different sizes and weights.
+\rmfamily
+\DeclareFontShape{T1}{lmr}{bx}{sc}{<-> cmr10}{}
+\DeclareFontFamily{OML}{zlmm}{}
+\DeclareFontShape{OML}{zlmm}{m}{it}{<-> lmmi10}{}
+\DeclareFontShape{OML}{zlmm}{b}{it}{<->ssub * zlmm/m/it}{}
+\DeclareFontShape{OML}{zlmm}{bx}{it}{<->ssub * zlmm/m/it}{}
+\DeclareMathVersion{Tinyb}
+\SetSymbolFont{operators}{Tinyb}{T1}{lmr}{bx}{sc}
+\SetSymbolFont{letters}{Tinyb}{OML}{zlmm}{m}{it}
+\newenvironment{tinyb}{\bgroup\tiny\bfseries\scshape\mathversion{Tinyb}}{\egroup}
+
+\fi

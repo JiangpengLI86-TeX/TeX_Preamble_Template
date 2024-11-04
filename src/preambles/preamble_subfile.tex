@@ -1,0 +1,9 @@
+
+\ifPreambleSubfileCore
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Enable each subfile to be compile independently but sharing the preamble of the main file
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{subfiles}  % Manage large LaTeX projects by splitting them into multiple smaller files.
+\providecommand{\topdir}{.}  % Create a consistent reference point for all files
+\addglobalbib{\topdir/references.bib}
+\fi

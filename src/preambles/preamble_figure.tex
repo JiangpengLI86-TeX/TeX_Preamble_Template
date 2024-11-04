@@ -1,0 +1,45 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Basic figure package
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\IncludeFigureCore}{%
+  \usepackage{graphicx}  % Required for inserting images
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % Rename figure name from "Figure." to "Fig."
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \renewcommand{\figurename}{\textbf{Fig.}}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % Enable figure floating
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \usepackage{float}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Basic figure package
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPreambleFigureCore
+
+\IncludeFigureCore
+
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Enable two figures in one line
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPreambleFigureTwoFiguresInOneLine
+
+\IncludeFigureCore
+\usepackage{subfig}
+
+% % Command template:
+% \begin{figure}[htbp!]
+%   \centering
+%   \subfloat[Before re-initialization]{\includegraphics[width=0.5\textwidth]{Figures/Before re-initialization.pdf}\label{fig:f1}}
+%   \hfill
+%   \subfloat[After re-initialization]{\includegraphics[width=0.5\textwidth]{Figures/After re-initialization.pdf}\label{fig:f2}}
+%   \centering
+%   \caption{Swarm distribution before and after reinitializing transitional particles on a one-dimensional problem}
+%   \label{fig:before_and_after_reinitialization}
+% \end{figure}
+\fi

@@ -1,0 +1,74 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Basic Array package
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\IncludeTableCore}{
+  \usepackage{array}
+  \usepackage{tabularx}
+  \usepackage{multirow}
+  \usepackage{booktabs}
+  \usepackage{longtable}
+  \usepackage{relsize}
+}
+
+\ifPreambleTableCore
+\IncludeTableCore
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Define three column types with automatic math mode
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPreambleTableMathColumn
+\IncludeTableCore
+\newcolumntype{R}{>{$}r<{$}} % math-mode version of "r" column type
+\newcolumntype{C}{>{$}c<{$}} % math-mode version of "c" column type
+\newcolumntype{L}{>{$}l<{$}} % math-mode version of "l" column type
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Define a type of column using small font, align to right and adjust space automatically
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPreambleTableAutoWidthColumn
+\IncludeTableCore
+% Defines a new type of column called Y based on a X column (this column type
+% is defined by the tabularx package and it is basically a p{ <width>} column,
+% where <width> is calculated by the package) but typesets the content using
+% \small font size and with ragged-right text.
+% NOTE: This command requires the tabularx package.
+\newcolumntype{Y}{>{\small\raggedright\arraybackslash}X}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Modify the space on the bottom and top of each cell
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPreambleTableModifyCellSpace
+\IncludeTableCore
+\usepackage{cellspace}
+\addtolength{\cellspacetoplimit}{5pt}
+\addtolength{\cellspacebottomlimit}{5pt}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Rename the Table name in supplymentary file from "Table X" to "Table SX"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPreambleTableSupplementaryTable
+\IncludeTableCore
+\renewcommand{\thetable}{S\arabic{table}}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Equally spread columns to fulfill the whole page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % Command template:
+% % \begin{longtable}[c]{@{\extracolsep{\fill}}Lllllllll}
+% % \end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Define a horizontal line that only appears in specific columns:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPreambleTableHorizontalLine
+\IncludeMathCore
+\usepackage{hhline}
+
+% Command templage:
+% \hhline{~----~~}  % Use as \hline, but the column with ~ will not have a horizontal line.
+\fi

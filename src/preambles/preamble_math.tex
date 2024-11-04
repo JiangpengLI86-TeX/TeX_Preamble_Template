@@ -1,0 +1,57 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some basic mathematical packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\IncludeMathCore}{
+  \usepackage{mathtools}
+  \usepackage{amssymb,mathrsfs}  % Typical maths resource packages
+  \usepackage{amsthm}
+  \usepackage{amsmath}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some basic mathematical packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPreambleMathCore
+
+\IncludeMathCore
+
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Narrow paragraph skip between equation and its previous paragraph
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPreambleMathNarrowSkip
+
+\IncludeMathCore
+\usepackage{nccmath}
+
+% Command template:
+% \useshortskip
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Enable the usage of some symbols in the math mode
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPreambleMathMoreSymbols
+
+\IncludeMathCore
+
+\usepackage{cancel}  % Enable cancel symbol in equations. Template: \cancel{XXX}
+
+% Command template:
+% \cancel{XXX}
+
+% Command template:
+% \mathds{P}  % Symbol for probability
+% \mathbb{E}  % Symbol for expectation
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set equation counting irrelevant to paragraph counting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPreambleMathUnifiedCounting
+
+\IncludeMathCore
+\counterwithout{equation}{section}
+
+\fi

@@ -1,0 +1,28 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set biblatex format and reference source file.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\IncludeReferenceCore}{
+  \usepackage[
+    backend=biber,  % It supports UTF-8 encoding and offers better handling of modern bibliography features, such as sorting and field mapping.
+    style=ieee,
+    maxbibnames=3,  % Maximum number of authors to be displayed in the bibliography
+    citestyle=numeric-comp,  % Put multiple citations in one bracket
+    hyperref=true,  % Enable hyperlinks in the bibliography
+    backref=true,  % Enable back references in the bibliography
+  ]{biblatex}
+  \addbibresource{references.bib}
+}
+
+\ifPreambleReferenceCore
+\IncludeReferenceCore
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Elegantly break long doi field
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPreambleReferenceBreakLongDoi
+\IncludeReferenceCore
+\setcounter{biburllcpenalty}{100}
+\setcounter{biburlucpenalty}{100}
+\setcounter{biburlnumpenalty}{100}
+\fi

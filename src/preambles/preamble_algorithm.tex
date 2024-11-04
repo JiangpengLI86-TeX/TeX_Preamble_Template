@@ -1,0 +1,27 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some basic sudo-algorithm packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\IncludeAlgorithmCore}{
+  \usepackage{algorithm}
+  \usepackage{algpseudocodex}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some basic sudo-algorithm packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPreambleAlgorithmCore
+
+\IncludeAlgorithmCore
+
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Reset the algorithm "Acquire" and "Ensure" to "Input" and "Output"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPreambleAlgorithmChangeInput
+
+\IncludeAlgorithmCore
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\fi

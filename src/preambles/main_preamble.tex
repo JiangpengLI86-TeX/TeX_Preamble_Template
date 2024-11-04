@@ -1,0 +1,82 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Predefine flags
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{src/preambles/utils/predefine_flags.tex}
+
+\usepackage{pgfkeys}
+
+% Define keys and associated flags
+\pgfkeys{
+  /mypreamble/.is family, /mypreamble,
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % Core
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  core/.style={
+    encoding-core,
+    figure-core,
+    font-core,
+    hyper-reference-core,
+    math-core,
+    paragraph-core,
+    reference-core,
+    table-core,
+  },
+  % Individual options for each sub-preamble
+  encoding-core/.code = {\PreambleEncodingCoretrue},
+  figure-core/.code = {\PreambleFigureCoretrue},
+  font-core/.code = {\PreambleFontCoretrue},
+  hyper-reference-core/.code = {\PreambleHyperReferenceCoretrue},
+  math-core/.code = {\PreambleMathCoretrue},
+  paragraph-core/.code = {\PreambleParagraphCoretrue},
+  reference-core/.code = {\PreambleReferenceCoretrue},
+  table-core/.code = {\PreambleTableCoretrue},
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % Optional
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  algorithm-core/.code = {\PreambleAlgorithmCoretrue},
+  algorithm-change-input/.code = {\PreambleAlgorithmChangeInputtrue},
+  attach-file-core/.code = {\PreambleAttachFileCoretrue},
+  code-core/.code = {\PreambleCodeCoretrue},
+  code-inline/.code = {\PreambleCodeInlinetrue},
+  code-block/.code = {\PreambleCodeBlocktrue},
+  enumerate-different-tag/.code = {\PreambleEnumerateDifferentTagtrue},
+  figure-two-figures-in-one-line/.code = {\PreambleFigureTwoFiguresInOneLinetrue},
+  font-tinyb/.code = {\PreambleFontTinybtrue},
+  information-block/.code = {\PreambleInformationBlocktrue},
+  line-number/.code = {\PreambleLineNumbertrue},
+  math-narrow-skip/.code = {\PreambleMathNarrowSkiptrue},
+  math-more-symbols/.code = {\PreambleMathMoreSymbolstrue},
+  math-unified-counting/.code = {\PreambleMathUnifiedCountingtrue},
+  multi-columns-core/.code = {\PreambleMultiColumnsCoretrue},
+  new-checkbox/.code = {\PreambleNewCheckboxtrue},
+  reference-break-long-doi/.code = {\PreambleReferenceBreakLongDoitrue},
+  subfile-core/.code = {\PreambleSubfileCoretrue},
+  table-math-column/.code = {\PreambleTableMathColumntrue},
+  table-auto-width-column/.code = {\PreambleTableAutoWidthColumntrue},
+  table-modify-cell-space/.code = {\PreambleTableModifyCellSpacetrue},
+  table-supplementary-table/.code = {\PreambleTableSupplementaryTabletrue},
+  table-horizontal-line/.code = {\PreambleTableHorizontalLinetrue},
+}
+
+% Define the command to process the options and include sub-preambles
+\newcommand{\mypreamble}[1]{
+  \pgfkeys{/mypreamble, #1}
+  \input{src/preambles/preamble_algorithm.tex}
+  \input{src/preambles/preamble_attach_file.tex}
+  \input{src/preambles/preamble_code.tex}
+  \input{src/preambles/preamble_encoding.tex}
+  \input{src/preambles/preamble_enumerate.tex}
+  \input{src/preambles/preamble_figure.tex}
+  \input{src/preambles/preamble_font.tex}
+  \input{src/preambles/preamble_hyper_reference.tex}
+  \input{src/preambles/preamble_information_block.tex}
+  \input{src/preambles/preamble_line_number.tex}
+  \input{src/preambles/preamble_math.tex}
+  \input{src/preambles/preamble_multi_columns.tex}
+  \input{src/preambles/preamble_new_symbol.tex}
+  \input{src/preambles/preamble_paragraph.tex}
+  \input{src/preambles/preamble_reference.tex}
+  \input{src/preambles/preamble_subfile.tex}
+  \input{src/preambles/preamble_table.tex}
+}

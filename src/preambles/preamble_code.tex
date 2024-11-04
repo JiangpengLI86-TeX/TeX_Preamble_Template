@@ -1,0 +1,56 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Enable code display by importing code from a file
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\IncludeCodeCore}{%
+  \usepackage{courier}
+  \usepackage{minted}
+
+  % Basic packages for inline and code block printings
+  \usepackage{color,soul}
+  \definecolor{codegray}{gray}{0.9}  % Define a new color for code block background.
+  \usepackage{upquote}  % Ensure the ' mark is displayed correctly.
+  \usepackage{listings}  % Used for code printing.
+}
+
+\ifPreambleCodeCore
+\IncludeCodeCore
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Define an inline code display using gray background and ttfamily fonts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPreambleCodeInline
+
+\IncludeCodeCore
+\newcommand{\codeinline}[1]{\colorbox{codegray}{\lstinline[basicstyle=\ttfamily,breaklines=true]|#1|}}
+
+% % Command template:
+% \codeinline{Your codes here}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Define a text field that can store the code without line-breaking.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPreambleCodeBlock
+
+\IncludeCodeCore
+% Note: hyperref package is required.
+
+% Set up a counter for auto-labelling
+\newcounter{codeCounter}
+
+% Setup the text field command. Check the hyperref package documentation for more set up options
+\newcommand{\codeblock}[1]
+{
+  \stepcounter{codeCounter}
+  \TextField[default=\detokenize{#1}, width=0.9\columnwidth, height=15pt, charsize=12pt,
+  ]{\thecodeCounter}
+}
+% suppress the label behind the text field:
+\def\LayoutTextField#1#2{% label, field
+  #2%
+}
+
+% % Command template:
+% \codeblock{Your codes here}
+\fi

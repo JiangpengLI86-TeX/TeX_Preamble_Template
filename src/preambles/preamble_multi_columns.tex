@@ -1,0 +1,16 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Enable multicolumn format in the page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPreambleMultiColumnsCore
+\usepackage{multicol}
+\usepackage{color}  % For color used column separator
+\setlength{\columnsep}{0.2cm}  % Set Column separation
+\setlength{\columnseprule}{1pt}
+\def\columnseprulecolor{\color{blue}}  % Add a vertical line between two columns.
+
+% Command template:
+% \begin{multicols}{4}  % Four column format
+
+% \end{multicols}
+\fi

@@ -1,0 +1,41 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hyperref package setting, including link, cite and url color
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\IncludeHyperReferenceCore}{
+  \usepackage{hyperref}
+  \hypersetup{
+    colorlinks=true,
+    linkcolor=cyan,
+    citecolor=cyan,
+    urlcolor=cyan,
+  }
+  \makeatletter  % Allow manipulation of internal LaTeX macros.
+  \AtBeginDocument{\def\@citecolor{cyan}}  % Redefines the internal LaTeX color used for citation links. Executed at the beginning of the document.
+  \AtBeginDocument{\def\@urlcolor{cyan}}
+  \AtBeginDocument{\def\@linkcolor{cyan}}
+  \makeatother
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hyperref package setting, including link, cite and url color
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPreambleHyperReferenceCore
+
+\IncludeHyperReferenceCore
+
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Make the brackets of equation citation blue
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % Command template:
+% % \hyperref[eq:clpso_velocity]{(\ref*{eq:clpso_velocity})}
+
+\ifPreambleHyperReferenceFixCaption
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some redundant link color settings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The hypcap package is used to fix a common issue with hyperlinks in documents that contain figures and tables. By default, when clicking on a hyperlink to a figure or table, the link takes you to the beginning of the caption instead of the figure or table itself.
+% The all option tells hypcap to apply this fix to all types of floats
+% \usepackage[all]{hypcap}
+\fi

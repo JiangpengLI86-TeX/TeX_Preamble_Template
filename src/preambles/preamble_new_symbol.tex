@@ -1,0 +1,12 @@
+
+\ifPreambleNewCheckbox
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Define a new symbol: "Checkbox"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\checkbox}[1]{%
+  \ifnum#1=1
+  \makebox[0pt][l]{\raisebox{0.15ex}{\hspace{0.1em}$\checkmark$}}%
+  \fi
+  $\square$%
+}
+\fi
